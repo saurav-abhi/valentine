@@ -31,6 +31,7 @@
 
     h1 {
         color: #ff3366;
+        margin-bottom: 10px;
     }
 
     p {
@@ -45,13 +46,19 @@
         margin: 25px 0;
     }
 
+    .buttons {
+        display: flex;
+        justify-content: center;
+        gap: 20px;
+        margin-top: 20px;
+    }
+
     button {
         padding: 12px 30px;
         font-size: 16px;
         border: none;
         border-radius: 25px;
         cursor: pointer;
-        margin: 10px;
         transition: 0.3s;
     }
 
@@ -67,7 +74,7 @@
     #noBtn {
         background: #ddd;
         color: #555;
-        position: absolute;
+        position: relative;
     }
 
     .hidden {
@@ -87,6 +94,7 @@
         font-size: 20px;
         animation: floatUp 6s linear infinite;
         opacity: 0.8;
+        z-index: 1;
     }
 
     @keyframes floatUp {
@@ -111,7 +119,7 @@
 
 <!-- BACKGROUND MUSIC -->
 <audio id="bgMusic" loop>
-    <source src="https://pixabay.com/music/modern-classical-hopeful-love-romantic-music-340835.mp3" type="audio/mpeg">
+    <source src="music.mp3" type="audio/mpeg">
 </audio>
 
 <!-- MAIN CARD -->
@@ -126,8 +134,10 @@
         Will you be my girlfriend and my Valentine? 💖
     </div>
 
-    <button id="yesBtn">Yes 💕</button>
-    <button id="noBtn">No 🙄</button>
+    <div class="buttons">
+        <button id="yesBtn">Yes 💕</button>
+        <button id="noBtn">No 🙄</button>
+    </div>
 </div>
 
 <!-- RESULT CARD -->
@@ -137,7 +147,9 @@
         I promise to make you smile, protect your heart,
         and love you more every day.
     </p>
-    <img src="https://i.imgur.com/9QZ7ZbF.png" alt="Love">
+
+    <!-- YOUR IMAGE -->
+    <img src="photo.jpg" alt="Us ❤️">
 </div>
 
 <script>
@@ -152,8 +164,9 @@
     noBtn.addEventListener("touchstart", moveNo);
 
     function moveNo() {
-        const x = Math.random() * (window.innerWidth - 100);
-        const y = Math.random() * (window.innerHeight - 50);
+        const x = Math.random() * (window.innerWidth - 120);
+        const y = Math.random() * (window.innerHeight - 60);
+        noBtn.style.position = "fixed";
         noBtn.style.left = x + "px";
         noBtn.style.top = y + "px";
     }
